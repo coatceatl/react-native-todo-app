@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
+import { Todo } from './Todo'
 
 export const AddTodo = ({ onSubmit }) => {
   const handleSubmit = () => {
@@ -16,13 +17,14 @@ export const AddTodo = ({ onSubmit }) => {
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
+    marginBottom: 15
   },
   input: {
-    width: '90%',
+    width: '85%',
     borderColor: '#4caf50',
     borderStyle: 'solid',
     borderRadius: 4,
     borderWidth: 2,
-    marginRight: 5
+    marginRight: 8
   }
 })
