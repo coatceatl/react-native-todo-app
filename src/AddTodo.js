@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native'
 
 export const AddTodo = ({ onSubmit }) => {
-  const [value, setValue] = useState('add new todo...')
+  const [value, setValue] = useState('')
 
   const handleSubmit = () => {
     if (!value) {
