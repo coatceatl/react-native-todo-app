@@ -5,13 +5,11 @@ import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
 
 export default function App() {
-  const [todos, setTodos] = useState([])
   const [todoId, setTodoId] = useState(null)
-
-  let content = <MainScreen todos={todos} addTodo={addTodo} removeTodo={removeTodo} />
-  if (todoId) {
-    content = <TodoScreen />
-  }
+  const [todos, setTodos] = useState([
+    { id: '1', title: 'First task' },
+    { id: '2', title: 'Second task' },
+  ])
 
   const addTodo = title => {
     setTodos(prev => [
@@ -25,6 +23,17 @@ export default function App() {
 
   const removeTodo = id => {
     setTodos(prev => prev.filter(todo => todo.id !== id))
+  }
+
+  let content = <MainScreen
+    todos={todos}
+    addTodo={addTodo}
+    removeTodo={removeTodo}
+    openTodo={(id) => { setTodoId(id) }}
+  />
+  if (todoId) {
+    const selectedTodo = todos.find(todo => todo.id === todoId)
+    content = <TodoScreen toBack={() => setTodoId(null)} todo={selectedTodo} />
   }
 
   return (

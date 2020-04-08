@@ -14,7 +14,7 @@ export const AddTodo = ({ onSubmit }) => {
   }
   return (
     <View style={styles.wrapper}>
-      <TextInput style={styles.input} value={value} onChangeText={text => setValue(text)} />
+      <TextInput style={styles.input} value={value} onChangeText={text => setValue(text)} autoFocus />
       <Button color='#4caf50' title='Add' onPress={handleSubmit} />
     </View>
   )
