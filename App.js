@@ -6,10 +6,7 @@ import { TodoScreen } from './src/screens/TodoScreen';
 
 export default function App() {
   const [todoId, setTodoId] = useState(null)
-  const [todos, setTodos] = useState([
-    { id: '1', title: 'First task' },
-    { id: '2', title: 'Second task' },
-  ])
+  const [todos, setTodos] = useState([])
 
   const addTodo = title => {
     setTodos(prev => [
@@ -42,6 +39,15 @@ export default function App() {
     );
   }
 
+  const updateTodo = (id, title) => {
+    setTodos(old => old.map(todo => {
+      if (todo.id === id) {
+        todo.title = title
+      }
+      return todo
+    }))
+  }
+
   let content = <MainScreen
     todos={todos}
     addTodo={addTodo}
@@ -54,6 +60,7 @@ export default function App() {
       toBack={() => setTodoId(null)}
       todo={selectedTodo}
       removeTodo={removeTodo}
+      onSave={updateTodo}
     />
   }
 
